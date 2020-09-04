@@ -9,26 +9,26 @@ double Legendre(double x, int n)
 {
     
     int degree = n;
-    double P; //return value
+    double A; //return value
     
     switch(degree)
     {
         case 0:
-            P = 1.; break;
+            A = 1.; break;
         case 1:
-            P = x; break;
+            A = x; break;
         case 2:
-            P =  0.5*(3.*x*x-1.); break;
+            A =  0.5*(3.*x*x-1.); break;
         case 3:
-            P = 0.5*(5.*x*x*x-3.*x); break;
+            A = 0.5*(5.*x*x*x-3.*x); break;
         case 4:
-            P = (1./8.)*(35.*x*x*x*x-30.*x*x+3); break;
+            A = (1./8.)*(35.*x*x*x*x-30.*x*x+3); break;
         case 5:
-            P = (1./8.)*(63.*x*x*x*x*x-70.*x*x*x+15*x); break;
+            A = (1./8.)*(63.*x*x*x*x*x-70.*x*x*x+15*x); break;
         default: // for n<0 || n>5
             throw "ERROR! We must have 0<n<5";
     }
-    return P;
+    return A;
 }
 
 vector<double> sampleLegendre(double a, double b, int N, int n)
@@ -45,7 +45,7 @@ vector<double> sampleLegendre(double a, double b, int N, int n)
     {
         x[i] = xmin + i*dx;
     }
-    vector<double> P(N);
+    vector<double> A(N);
 
         
         
@@ -54,22 +54,22 @@ vector<double> sampleLegendre(double a, double b, int N, int n)
         switch(degree)
         {
             case 0:
-                P[i] = 1.; break;
+                A[i] = 1.; break;
             case 1:
-                P[i] = x[i]; break;
+                A[i] = x[i]; break;
             case 2:
-                P[i] =  0.5*(3.*x[i]*x[i]-1.); break;
+                A[i] =  0.5*(3.*x[i]*x[i]-1.); break;
             case 3:
-                P[i] = 0.5*(5.*x[i]*x[i]*x[i]-3.*x[i]); break;
+                A[i] = 0.5*(5.*x[i]*x[i]*x[i]-3.*x[i]); break;
             case 4:
-                P[i] = (1./8.)*(35.*x[i]*x[i]*x[i]*x[i]-30.*x[i]*x[i]+3); break;
+                A[i] = (1./8.)*(35.*x[i]*x[i]*x[i]*x[i]-30.*x[i]*x[i]+3); break;
             case 5:
-                P[i] = (1./8.)*(63.*x[i]*x[i]*x[i]*x[i]*x[i]-70.*x[i]*x[i]*x[i]+15*x[i]); break;
+                A[i] = (1./8.)*(63.*x[i]*x[i]*x[i]*x[i]*x[i]-70.*x[i]*x[i]*x[i]+15*x[i]); break;
             default:    
                 break;
         }
     }
-    return P;
+    return A;
 }
 
 int main()
@@ -92,12 +92,12 @@ int main()
     }
 
     // for sampleLegendre
-    int N = 3; // number of point in the interval
-    double a = 0.; // left bound
+    int N = 5; // number of point in the interval
+    double a = -1.; // left bound
     double b = 1.; // right bound
-    int n = 6; // degree of Legendre Polynomial
+    int n = 4; // degree of Legendre Aolynomial
     
-    vector<double> P = sampleLegendre(a,b,N,n);
+    vector<double> A = sampleLegendre(a,b,N,n);
     
     if (n<0 || n>5)
     {
@@ -107,7 +107,7 @@ int main()
 
     for(int i=0;i<N;i++)
     {
-        cout << P[i] << endl;
+        cout << A[i] << endl;
     }
     return(0);
 }
