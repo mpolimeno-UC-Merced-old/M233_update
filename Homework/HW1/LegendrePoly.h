@@ -3,6 +3,8 @@
 
 #include <vector>
 
+using namespace std;
+
 class LegendrePoly
 {
 
@@ -19,7 +21,7 @@ public:
     LegendrePoly();
         
     double Legendre(double x, int n);
-    std::vector<double> sampleLegendre(double a, double b, int N, int n);
+    vector<double> sampleLegendre(double a, double b, int N, int n);
 };
 
 #endif //LEGENDREPOLY_H

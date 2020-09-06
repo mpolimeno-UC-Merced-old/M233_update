@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 #include <vector>
 #include "LegendrePoly.h"
 
@@ -7,6 +8,7 @@ using namespace std;
 
 int main()
 {
+
     LegendrePoly LP;
 
     // for Legendre
@@ -25,22 +27,32 @@ int main()
     }
 
     // for sampleLegendre
-    int N = 5; // number of point in the interval
+    int N = 1000; // number of point in the interval
     double a = -1.; // left bound
     double b = 1.; // right bound
-    int n = 4; // degree of Legendre Polynomial
-    
-    vector<double> A = LP.sampleLegendre(a,b,N,n);
+    int n = 5; // degree of Legendre Polynomial
     
     if (n<0 || n>5)
     {
-        cout << "ERROR! We must have 0<n<5" << endl;
+        cout << "ERROR! We must have 0<=n<6" << endl;
         exit(0);
     }
+    
+    FILE *fp;
+    char polyout[128];
+    sprintf(polyout,"poly_%d.txt",n);
+
+    ofstream res;
+    res.open(polyout);
+
+    vector<double> A = LP.sampleLegendre(a,b,N,n);
+    
 
     for(int i=0;i<N;i++)
     {
-        cout << A[i] << endl;
+        res << A[i] << endl;
     }
+    res.close();
+
     return(0);
 }
