@@ -13,12 +13,12 @@ poly4 = np.loadtxt("poly_4.txt");
 poly5 = np.loadtxt("poly_5.txt");
 
 
-plt.plot(x,poly0,'k-',label='$A^{0}_{1000}$');
-plt.plot(x,poly1,'b-',label='$A^{1}_{1000}$');
-plt.plot(x,poly2,'c-',label='$A^{2}_{1000}$');
-plt.plot(x,poly3,'r-',label='$A^{3}_{1000}$');
-plt.plot(x,poly4,'y-',label='$A^{4}_{1000}$');
-plt.plot(x,poly5,'m-',label='$A^{5}_{1000}$');
+plt.plot(x,poly0,'g-',label='$A^{0}_{1000}$',linewidth=2);
+plt.plot(x,poly1,'b-',label='$A^{1}_{1000}$',linewidth=2);
+plt.plot(x,poly2,'c-',label='$A^{2}_{1000}$',linewidth=2);
+plt.plot(x,poly3,'r-',label='$A^{3}_{1000}$',linewidth=2);
+plt.plot(x,poly4,'y-',label='$A^{4}_{1000}$',linewidth=2);
+plt.plot(x,poly5,'m-',label='$A^{5}_{1000}$',linewidth=2);
 plt.xlim([-1.,1.])
 plt.ylim([-1.25,1.25])
 plt.xlabel('$x$',fontsize=15)

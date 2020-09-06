@@ -27,9 +27,9 @@ int main()
     }
 
     // for sampleLegendre
-    int N = 1000; // number of point in the interval
-    double a = -1.; // left bound
-    double b = 1.; // right bound
+    int N = 1000; // number of points in the interval
+    double a = -1.; // lower bound
+    double b = 1.; // upper bound
     int n = 5; // degree of Legendre Polynomial
     
     if (n<0 || n>5)

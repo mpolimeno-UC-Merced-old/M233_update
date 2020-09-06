@@ -26,7 +26,7 @@ double Legendre(double x, int n)
         case 5:
             A = (1./8.)*(63.*x*x*x*x*x-70.*x*x*x+15*x); break;
         default: // for n<0 || n>5
-            throw "ERROR! We must have 0<=n<5";
+            throw "ERROR! We must have 0<=n<=5";
     }
     return A;
 }
@@ -102,7 +102,7 @@ int main()
     
     if (n<0 || n>5)
     {
-        cout << "ERROR! We must have 0<=n<5" << endl;
+        cout << "ERROR! We must have 0<=n<=5" << endl;
         exit(0);
     }
 
