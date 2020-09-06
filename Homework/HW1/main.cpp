@@ -34,11 +34,10 @@ int main()
     
     if (n<0 || n>5)
     {
-        cout << "ERROR! We must have 0<=n<6" << endl;
+        cout << "ERROR! We must have 0<=n<=5" << endl;
         exit(0);
     }
     
-    FILE *fp;
     char polyout[128];
     sprintf(polyout,"poly_%d.txt",n);
 
