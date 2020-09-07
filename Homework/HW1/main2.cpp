@@ -31,7 +31,7 @@ double Legendre(double x, int n)
     return A;
 }
 
-vector<double> sampleLegendre(double a, double b, int N, int n)
+vector<double> sampledLegendre(double a, double b, int N, int n)
 {
     
     int degree = n;
@@ -98,7 +98,7 @@ int main()
     double b = 1.; // right bound
     int n = 4; // degree of Legendre Aolynomial
     
-    vector<double> A = sampleLegendre(a,b,N,n);
+    vector<double> A = sampledLegendre(a,b,N,n);
     
     if (n<0 || n>5)
     {

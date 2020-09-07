@@ -21,7 +21,7 @@ public:
     LegendrePoly();
         
     double Legendre(double x, int n);
-    vector<double> sampleLegendre(double a, double b, int N, int n);
+    vector<double> sampledLegendre(double a, double b, int N, int n);
 };
 
 #endif //LEGENDREPOLY_H

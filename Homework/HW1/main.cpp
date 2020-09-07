@@ -44,7 +44,7 @@ int main()
     ofstream res;
     res.open(polyout);
 
-    vector<double> A = LP.sampleLegendre(a,b,N,n);
+    vector<double> A = LP.sampledLegendre(a,b,N,n);
     
 
     for(int i=0;i<N;i++)

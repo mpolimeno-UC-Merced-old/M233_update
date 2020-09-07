@@ -36,7 +36,7 @@ double LegendrePoly::Legendre(double x, int n)
     return A;
 }
 
-vector<double> LegendrePoly::sampleLegendre(double a, double b, int N, int n)
+vector<double> LegendrePoly::sampledLegendre(double a, double b, int N, int n)
 {
     
     int degree = n;
