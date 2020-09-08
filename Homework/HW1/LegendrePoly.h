@@ -1,6 +1,7 @@
 #ifndef LEGENDREPOLY_H
 #define LEGENDREPOLY_H
 
+#include <iostream>
 #include <vector>
 
 using namespace std;
