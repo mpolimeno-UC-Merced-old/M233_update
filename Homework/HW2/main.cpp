@@ -29,7 +29,7 @@ int main()
     }
     };
     
-    int N = 1024;
+    int N = 512;
     int Nsq = N*N;
 
     double xmin = -1.;
@@ -65,18 +65,24 @@ int main()
 
     ENO_Advection eno(new_grid,phin);
 
+
+    char vtkfile[250];
+    sprintf(vtkfile,"sol_eno_N_%d_t_%d.vtk",N,0); // initial data for movies in paraview
+    new_grid.initialize_VTK_file(vtkfile);
+    new_grid.print_VTK_Format(phin,"values_at_nodes",vtkfile); // for movies in paraview
+    
     char filename[128];
-    sprintf(filename,"sol_eno_N_%d_t_%d.DAT",N,0);
+    sprintf(filename,"sol_MATLAB_N_%d_t_%d.DAT",N,0);
 
     FILE *fp = fopen(filename,"w");
-
     for (int n=0;n<Nsq;n++)
     {
-        fprintf(fp,"%g\t",phin[n]);
+        fprintf(fp,"%g\t",phin[n]); // for matlab initial solution
     }
     fclose(fp);
 
     char filename2[128];
+    char vtkfile2[250];
     int k = 1;
     double tn = 0.;
 
@@ -89,9 +95,9 @@ int main()
 
     while(tn<=2.*Pi)
     {
+
         if (tn+dt>2.*Pi) tn = 2.*Pi;
-        //sprintf(filename2,"sol_eno_N_%d_t_%d.DAT",N,k);
-        //FILE *fp2 = fopen(filename2,"w");
+        
         for (int n=0;n<Nsq;n++)
         {
             xval = new_grid.x_from_n(n);
@@ -101,9 +107,16 @@ int main()
             phinp1 = eno.one_Step(new_grid,vx(xval,yval),vy(xval,yval),phix,phiy,phin,n,dt);
             phin[n] = phinp1;            
         }
+
+        sprintf(vtkfile2,"sol_eno_N_%d_t_%d.vtk",N,k);
+        new_grid.initialize_VTK_file(vtkfile2);
+        new_grid.print_VTK_Format(phin,"values_at_nodes",vtkfile2); // for movies in paraview
+        
+        // get final data for matlab
+        
         if (tn==2.*Pi)
         {
-            sprintf(filename2,"sol_eno_N_%d_t_%d.DAT",N,k);
+            sprintf(filename2,"sol_MATLAB_N_%d_t_%d.DAT",N,k);
             FILE *fp2 = fopen(filename2,"w");
             for (int n=0;n<Nsq;n++)
             {
@@ -111,6 +124,7 @@ int main()
             }
             fclose(fp2);
         }
+        
         tn = tn + dt;
         k = k + 1;
     }

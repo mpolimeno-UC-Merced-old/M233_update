@@ -21,6 +21,9 @@ public:
     Grid2D();
     Grid2D(int N_,int M_, double xmin_, double xmax_,double ymin_, double ymax_);    
     
+    void initialize_VTK_file(std::string file_name);    
+    void print_VTK_Format( std::vector<double> &F, std::string data_name, std::string file_name );
+
     double get_dx();
     double get_dy();
     double get_xmin();
